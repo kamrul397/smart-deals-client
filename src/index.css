@@ -1,10 +1,26 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-
+/* keep your theme vars if you want; they won’t create a gradient */
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: blue;
+  --color-primary: #632ee3; /* used by other components */
   --color-secondary: teal;
+}
+
+/* ⬇️ Make all btn-primary use a gradient */
+@layer components {
+  .btn-primary {
+    @apply text-white border-0;
+    background-image: linear-gradient(to right, #632ee3, #9f62f2);
+  }
+  .btn-primary:hover {
+    filter: brightness(0.95);
+  }
+  /* optional focus ring to match DaisyUI style */
+  .btn-primary:focus-visible {
+    outline: 2px solid color-mix(in oklab, #9f62f2 70%, white);
+    outline-offset: 2px;
+  }
 }

@@ -1,7 +1,19 @@
 import React from "react";
+import LatestProducts from "./LatestProducts";
+
+const latestProductsPromise = fetch(
+  "http://localhost:3000/latest-products"
+).then((res) => res.json());
 
 const Home = () => {
-  return <div>Home Component</div>;
+  return (
+    <div>
+      <h1>This is Home </h1>
+      <LatestProducts
+        latestProductsPromise={latestProductsPromise}
+      ></LatestProducts>
+    </div>
+  );
 };
 
 export default Home;
